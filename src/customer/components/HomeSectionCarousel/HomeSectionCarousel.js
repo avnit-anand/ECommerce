@@ -9,7 +9,7 @@ import { Button } from "@mui/material";
 
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
 
-const HomeSectionCarousel = ({data, sectionName}) => {
+const HomeSectionCarousel = ({ data, sectionName }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const responsive = {
@@ -18,11 +18,15 @@ const HomeSectionCarousel = ({data, sectionName}) => {
     1024: { items: 5 },
   };
 
-  const slidePrev = () => setActiveIndex(activeIndex - 1);
+  const slidePrev = () => {
+    setActiveIndex(activeIndex - 1);
+  };
 
-  const slideNext = () => setActiveIndex(activeIndex + 1);
+  const slideNext = () => {
+    setActiveIndex(activeIndex + 1);
+  };
 
-  const syncActiveIndex = ({ item }) => setActiveIndex(item);
+  const syncActiveIndex = (item) => setActiveIndex(item);
 
   const items = data
     .slice(0, 10)
@@ -30,12 +34,13 @@ const HomeSectionCarousel = ({data, sectionName}) => {
 
   return (
     <div className="">
-      <h2 className="text-2xl font-extrabold text-gray-800 py-5">{sectionName}</h2>
+      <h2 className="text-2xl font-extrabold text-gray-800 py-5">
+        {sectionName}
+      </h2>
       <div className="relative p-5">
-
         <AliceCarousel
           items={items}
-          disableButtonsControls
+          // disableButtonsControls
           disableDotsControls
           responsive={responsive}
           onSlideChange={syncActiveIndex}
